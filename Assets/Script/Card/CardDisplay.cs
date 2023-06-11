@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CardDisplay : MonoBehaviour
 {
     [SerializeField]
-    private Card _card;
+    public Card _card;
     [SerializeField]
     private TextMeshProUGUI _cardName;
     [SerializeField]
@@ -20,7 +21,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _cardType;
     [SerializeField]
-    private Sprite _cardImage;
+    private Image _cardImage;
 
 
     void Start()
@@ -38,6 +39,8 @@ public class CardDisplay : MonoBehaviour
         _cardManacost.text = _card.manacost.ToString();
         _cardHP.text = _card.hp.ToString();
 
-        _cardImage = _card.cardImage;
+        _cardImage.sprite = _card.cardImage;
+        _cardImage.color = new Color32(255, 255, 255, 255);
+        
     }
 }
