@@ -82,6 +82,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Script\Card\Card.cs" />
+     <Compile Include="Assets\Script\UtilitySC.cs" />
+     <Compile Include="Assets\Script\Settings.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <Folder Include="Assets\TextMesh Pro\Examples &amp; Extras\Sprites" />
@@ -96,10 +98,13 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources" />
+     <Folder Include="Assets\Artworks" />
      <Folder Include="Assets\Script\Card" />
+     <Folder Include="Assets\Scriptable cards" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Script\Player" />
      <Folder Include="Assets\TextMesh Pro" />
+     <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts" />
      <Folder Include="Assets\TextMesh Pro\Examples &amp; Extras\Resources" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
