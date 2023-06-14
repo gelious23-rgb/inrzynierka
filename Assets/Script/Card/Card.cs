@@ -7,12 +7,18 @@ using TMPro;
 public class Card : ScriptableObject
 {
     public new string name;
-    public string description;
-    public string cardType;
+  [TextArea]  public string description;
+
+    public  Types CardType; 
 
     public Sprite cardImage;
 
     public int hp;
     public int attack;
     public int manacost;
+[System.Serializable]
+    public enum Types
+    {
+       Tool, Man, Powers, Relic, Heroic
+    };
 }
