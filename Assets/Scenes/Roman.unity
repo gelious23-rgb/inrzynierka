@@ -342,12 +342,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dcd4d73e2975d4b8d352780abf5d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 110232547}
   _playerHand: {fileID: 30609612}
   _playerBoard: {fileID: 1800510650}
   _cardPrefab: {fileID: 2183422445108504573, guid: 4632354dd28f18941ac7fb8bff53a6e9, type: 3}
   _cards:
+  - {fileID: 11400000, guid: 30609d5128a1a2f499f3a2971027cb18, type: 2}
+  - {fileID: 11400000, guid: d4af8fb32b9b3b74a903d5a1460d0a0d, type: 2}
+  - {fileID: 11400000, guid: 2e4d22f16ad04374f99a19860f9e36f2, type: 2}
+  - {fileID: 11400000, guid: 68167305340a37040887f9c7880279d8, type: 2}
+  - {fileID: 11400000, guid: 0541e9fb6be5db9458c110d3b0760e96, type: 2}
+  - {fileID: 11400000, guid: c58c175fe4740ae41b432000e3a83112, type: 2}
+  - {fileID: 11400000, guid: 2e8d6e74be91f094b8a1a433969ea47d, type: 2}
+  - {fileID: 11400000, guid: 55cbdf4b20b08d0458b12cb6406ad3d8, type: 2}
+  - {fileID: 11400000, guid: b6f3539fb371aad4981b35bfd09e0bae, type: 2}
+  - {fileID: 11400000, guid: 96406d7f8b7d49643a1929a1faddd8d6, type: 2}
+  - {fileID: 11400000, guid: d5fdc48bb8ee13842bf59a3aca93dd4d, type: 2}
+  - {fileID: 11400000, guid: 475a297b8ba21bd4ea4d019a7b073b53, type: 2}
+  - {fileID: 11400000, guid: 26fc0fa4f590baf4cb8ca700bc2f2099, type: 2}
+  - {fileID: 11400000, guid: 216722d376bf36a49894f574386c191c, type: 2}
+  - {fileID: 11400000, guid: 0304d61881e6aa447a2f8b6009ba2b7d, type: 2}
   - {fileID: 11400000, guid: 356b79cc2388b9a478ca147832b50faf, type: 2}
+  - {fileID: 11400000, guid: c8c884ca0e40e224695442ec912a46f0, type: 2}
   - {fileID: 11400000, guid: 8dabc83d0717c2346930406d012833fc, type: 2}
+  - {fileID: 11400000, guid: 5d329064b9f742743ac55d3935102eea, type: 2}
 --- !u!1 &1032353528
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +624,7 @@ GameObject:
   - component: {fileID: 1800510654}
   - component: {fileID: 1800510653}
   - component: {fileID: 1800510652}
+  - component: {fileID: 1800510655}
   m_Layer: 5
   m_Name: Player Board
   m_TagString: Untagged
@@ -697,6 +716,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800510650}
   m_CullTransparentMesh: 1
+--- !u!61 &1800510655
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800510650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1833988949
 GameObject:
   m_ObjectHideFlags: 0
