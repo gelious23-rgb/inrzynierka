@@ -3,20 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown Resolution;
-    [SerializeField] private Toggle Fullscreen;
+    private Toggle Fullscreen;
     private Resolution[] resolutions;
     private List<Resolution> ResolutionList;
     private float currentRefreshrate;
     private int resolutionIndex = 0;
+    [SerializeField]private  Slider _slider;
+    public AudioMixer Mixer;
     
+    private void Awake()    
+    {
+        Mixer.SetFloat("Vol", PlayerPrefs.GetFloat("Volume"));
+        
+         
+    }
 
     private void Start()
     {
+        _slider.value = PlayerPrefs.GetFloat("Volume");
       
         resolutions = Screen.resolutions;
         ResolutionList = new List<Resolution>();
@@ -56,4 +66,16 @@ public class Settings : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, true);
         
     }
+    public void check()
+    {
+        Mixer.SetFloat("Vol", PlayerPrefs.GetFloat("Volume"));
+    }
+
+    public void SetVolume(float volume)
+    {
+        Mixer.SetFloat("Vol", volume); 
+         
+    }
+
+  
 }

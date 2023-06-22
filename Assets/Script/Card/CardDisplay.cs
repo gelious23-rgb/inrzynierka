@@ -33,7 +33,7 @@ public class CardDisplay : MonoBehaviour
     {
         _cardName.text = _card.name;
         _cardDescription.text = _card.description;
-        _cardDescription.text = UtilitySC.DrawDetails(_cardDescription.text); 
+         
         _cardType.text = _card.CardType.ToString();
 
         _cardAttack.text = _card.attack.ToString();

@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 391661124390865149}
   - component: {fileID: 786294802222601573}
   - component: {fileID: 4130403946674757318}
+  - component: {fileID: 6228114136531343537}
   m_Layer: 5
   m_Name: "Card\u0421ompendium"
   m_TagString: Untagged
@@ -969,6 +970,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6228114136531343537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841177486355139898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d59ae1bd75b0474e9355e69093329ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onclick: {fileID: 4130403946674757318}
+  name_: {fileID: 8741656459844679905}
+  desc: {fileID: 3595780126540479853}
+  Type: {fileID: 7695186071723682065}
+  hp: {fileID: 1961887719555916175}
+  atk: {fileID: 4697350235999923318}
+  cost: {fileID: 5731495945881552063}
+  artwork: {fileID: 2888942409764384437}
 --- !u!1 &5228170250109453260
 GameObject:
   m_ObjectHideFlags: 0

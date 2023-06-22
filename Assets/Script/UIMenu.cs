@@ -12,10 +12,10 @@ using UnityEngine.Events;
 
 public class UIMenu : MonoBehaviour
 {
-    
+   [HideInInspector] [SerializeField] private DescExplanations descexp;
     
    // [SerializeField] private Button[] yesNo; //всплывающее окно на будущее
-    [SerializeField]  private GameObject NowOpened;
+       private GameObject NowOpened;
     [SerializeField] private GameObject Compendium;
     [SerializeField] private GameObject Content;
     [SerializeField] private GameObject CardUI;
@@ -42,48 +42,36 @@ public class UIMenu : MonoBehaviour
     private void Spawn(Card cardSC)
     {
         var card = Instantiate(CardUI, Content.transform);
+        var cardSc = card.GetComponent<CardCompendiumSC>();
         
-        List<Transform> Fields = new List<Transform>(); 
-        Fields.Add(card.transform.GetChild(0));
-        Fields.Add(card.transform.GetChild(1));
-        Fields.Add(AddCompendiumCardFieldSecondary(card, 2));
-        Fields.Add(AddCompendiumCardFieldSecondary(card, 3));
-        Fields.Add(AddCompendiumCardFieldSecondary(card, 4));
-        Fields.Add(AddCompendiumCardFieldSecondary(card, 5));
-        Fields.Add(AddCompendiumCardFieldSecondary(card, 6));
-        Fields[0].GetComponent<TextMeshProUGUI>().text = cardSC.name; 
-        Fields[1].GetComponent<TextMeshProUGUI>().text = UtilitySC.DrawDetails(cardSC.description); 
-        Fields[2].GetComponent<Image>().sprite = cardSC.cardImage;
-        Fields[3].GetComponent<TextMeshProUGUI>().text = cardSC.CardType.ToString(); 
-        Fields[4].GetComponent<TextMeshProUGUI>().text = cardSC.hp.ToString(); 
-        Fields[5].GetComponent<TextMeshProUGUI>().text = cardSC.attack.ToString();
-        Fields[6].GetComponent<TextMeshProUGUI>().text = cardSC.manacost.ToString(); 
-        card.GetComponent<Button>().onClick.AddListener(()=>OnClickCard(card));
+        cardSc.name_.text = cardSC.name;
+        cardSc.desc.text = cardSC.description;
+        cardSc.artwork.sprite = cardSC.cardImage;
+        cardSc.Type.text = cardSC.CardType.ToString();
+        cardSc.hp.text = cardSC.hp.ToString();
+        cardSc.atk.text = cardSC.attack.ToString();
+        cardSc.cost.text = cardSC.manacost.ToString();
+        
+        cardSc.onclick.onClick.AddListener(()=>OnClickCard(card));
     }
 
     private void OnClickCard(GameObject this_)
     {
         NameUI.text = this_.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         DescUI.text = this_.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
-        for (var index = 0; index < UtilitySC.Keywords.Length; index++)
+        for (var index = 0; index < descexp.Descs.Length; index++)
         {
-            var Keyword = UtilitySC.Keywords[index];
+            var Keyword = descexp.Descs[index];
             if (DescUI.text.Contains(Keyword))
             {
                 DescUI.text = DescUI.text.Replace(DescUI.text, DescUI.text + "\n " + Keyword +
-                                                               " - " + UtilitySC.Explanation[index]+ "\n");
+                                                               " - " + descexp.Explanations[index]+ "\n");
             }
         }
-        DescUI.text = UtilitySC.DrawDetails(DescUI.text);
+         
         
     }
 
-    private Transform AddCompendiumCardFieldSecondary(GameObject card, int i)
-    {
-      return  card.transform.GetChild(i).GetChild(0);
-    }
-
-   
     
     
     
