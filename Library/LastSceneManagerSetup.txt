@@ -2,7 +2,11 @@ sceneSetups:
 <<<<<<< Updated upstream
 - path: Assets/Scenes/Roman.unity
 =======
+<<<<<<< Updated upstream
 - path: Assets/Scenes/TestScene.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1

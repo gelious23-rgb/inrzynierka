@@ -15,7 +15,11 @@ m_ProjectFiles:
   m_LockFileStatus:
     m_FilePath: C:/Users/48537/Desktop/Unity Projects/Inzynierka2/inrzynierka/Packages/packages-lock.json
 =======
+<<<<<<< Updated upstream
       ticks: 638230798093943671
+=======
+      ticks: 638233284664756374
+>>>>>>> Stashed changes
     m_Hash: 1966945893
   m_LockFileStatus:
     m_FilePath: D:/Repo/inrzynierka/Packages/packages-lock.json
@@ -27,7 +31,11 @@ m_ProjectFiles:
 <<<<<<< Updated upstream
       ticks: 638210792509829450
 =======
+<<<<<<< Updated upstream
       ticks: 638230798093953671
+=======
+      ticks: 638233284664756374
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
     m_Hash: 1132395109
 m_EmbeddedPackageManifests:
