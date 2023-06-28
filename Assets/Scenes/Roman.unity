@@ -323,6 +323,7 @@ RectTransform:
   - {fileID: 1890342572}
   - {fileID: 332342900}
   - {fileID: 2105795723}
+  - {fileID: 956899422}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,9 +344,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dcd4d73e2975d4b8d352780abf5d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerDeckCardCount: 20
+  _enemyDeckCardCount: 3
+  _playerHandCardLimitCount: 5
+  _enemyHandCardLimitCount: 5
+  _boardCardLimitCount: 5
   _canvas: {fileID: 110232547}
   _playerHand: {fileID: 30609612}
   _playerBoard: {fileID: 1890342567}
+  _enemyHand: {fileID: 332342899}
+  _enemyBoard: {fileID: 2105795722}
+  _cardInstanceTransform: {fileID: 956899422}
   _cardPrefab: {fileID: 2183422445108504573, guid: 4632354dd28f18941ac7fb8bff53a6e9, type: 3}
   _cards:
   - {fileID: 11400000, guid: 30609d5128a1a2f499f3a2971027cb18, type: 2}
@@ -367,6 +376,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c8c884ca0e40e224695442ec912a46f0, type: 2}
   - {fileID: 11400000, guid: 8dabc83d0717c2346930406d012833fc, type: 2}
   - {fileID: 11400000, guid: 5d329064b9f742743ac55d3935102eea, type: 2}
+  _playerDeck: []
+  _enemyDeck: []
 --- !u!1 &332342899
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +481,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332342899}
   m_CullTransparentMesh: 1
+--- !u!1 &956899421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956899422}
+  m_Layer: 0
+  m_Name: CardInstanceTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &956899422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956899421}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -906.1013, y: -100.97004, z: 572.9818}
+  m_LocalScale: {x: 1.3079019, y: 1.3079019, z: 1.3079019}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110232551}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1032353528
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25941718}
   m_AnchorMax: {x: 1, y: 0.47000003}
-  m_AnchoredPosition: {x: -0.539978, y: 2}
+  m_AnchoredPosition: {x: -0.539978, y: 2.0014343}
   m_SizeDelta: {x: -1.0799866, y: 4.675995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2105795722
