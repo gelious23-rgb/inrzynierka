@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Card
+    uniqueID: 3250930967
+    locked: 0
+  - name: PlayerHand
+    uniqueID: 337356127
+    locked: 0
+  - name: Board
+    uniqueID: 192208267
+    locked: 0
