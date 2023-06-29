@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 'All cards on the field receive 1 damage when it is played. If alive
     for  3 turns, kills one enemy card every turn. '
   CardType: 4
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 09523a0ef2822b74fb5fc9bc03b134ea, type: 3}
   hp: 11
   attack: 6
   manacost: 5
