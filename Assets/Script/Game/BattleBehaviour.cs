@@ -9,61 +9,130 @@ namespace Script.Game
 {
     public class BattleBehaviour : MonoBehaviour
     {
-        public List<Player> Players;
+        public Player humanPlayer;
+        public BotPlayer botPlayer;
+        private Player _activePlayer;
         
+        [SerializeField]
+        private BoardManager _boardManager;
+        [SerializeField]
+        private NextTurnButton _nextTurnButton;
         private WinPanel _winPanel;
         private LosePanel _losePanel;
-        [SerializeField] private NextTurnButton _nextTurnButton;
         
-        private int _activePlayerIndex;
-        private readonly WaitForSeconds _waitAfterEnd = new(1f);
-        private Coroutine _coroutine;
-        private IEnumerator _turnPlayer;
-
+        private bool _playerTurnSkipped;
+        public float turnTimeLimit = 30f;
+        private float _turnTimer;
+        
         private void Start()
         {
-            _coroutine = StartCoroutine(NextTurn());
+            _activePlayer = humanPlayer;
+            StartTurn();
         }
         
-        private IEnumerator NextTurn()
+        private void StartTurn()
          {
-             for (_activePlayerIndex = 0; _activePlayerIndex < Players.Count ; _activePlayerIndex++)
+             _activePlayer.StartTurn();
+             _playerTurnSkipped = false;
+             _turnTimer = turnTimeLimit;
+
+             if (_activePlayer == humanPlayer)
              {
-                 if (Players[_activePlayerIndex].IsPlayer == false)
-                     yield return Players[_activePlayerIndex].TurnBot();
-                 else
-                 {
-                     ActivateUI();
-                     _turnPlayer = Players[_activePlayerIndex].TurnPlayer(2);
-                     yield return new WaitUntil(PlayerEndTurn);
-                 }
+                 _nextTurnButton.gameObject.SetActive(true);
+                 StartCoroutine(TurnPlayer());
              }
-
-             StartCoroutine(DeterminateWinner());
-         }
-
-        private bool PlayerEndTurn() => _nextTurnButton.gameObject.activeSelf == false || Players.Count == 1;
-
-        private void ActivateUI() => _nextTurnButton.gameObject.SetActive(true);
-
-         private IEnumerator DeterminateWinner()
-         {
-             switch (Players[0].IsPlayer)
+             else
              {
-                 case false:
-                     yield return _waitAfterEnd;
-                     _losePanel.Show();
-                     StopCoroutine(_coroutine);
-                     break;
-                 case true when Players.Count == 1:
-                     yield return _waitAfterEnd;
-                     _winPanel.Show();
-                     StopCoroutine(_coroutine);
-                     break;
-                 default:
-                     _coroutine = StartCoroutine(NextTurn());
-                     break;
+                 StartCoroutine(TurnBot());
              }
          }
+        
+        public void SkipPlayerTurn()
+        {
+            if (_activePlayer == humanPlayer)
+            {
+                _playerTurnSkipped = true;
+                _nextTurnButton.gameObject.SetActive(false);
+                EndTurn();
+            }
+        }
+        
+        public IEnumerator TurnBot()
+        {
+            yield return new WaitForSeconds(1f); 
+            
+            // Bot's turn logic goes here
+            
+            // You can implement AI decision-making, card plays, and other actions
+
+            yield return new WaitForSeconds(1f); 
+            
+            EndTurn();
+        }
+        
+        public IEnumerator TurnPlayer()
+        {
+            _boardManager.AddCardToPlayerHand(3); 
+             yield return TurnTimer();
+            
+            if (_activePlayer.ShouldSkipTurn())
+            {
+                Debug.Log(_activePlayer.playerName + " skipped their turn.");
+            }
+            else if (_turnTimer <= 0f)
+            {
+                Debug.Log(_activePlayer.playerName + " ran out of time.");
+            }
+
+            yield return new WaitForSeconds(1f); // Delay for visual effect or animation
+            EndTurn();
+        }
+
+        private IEnumerator TurnTimer()
+        {
+            while (_turnTimer > 0f && !_activePlayer.ShouldSkipTurn())
+            {
+                _turnTimer -= Time.deltaTime;
+                _nextTurnButton.UpdateTurnTimer(_turnTimer);
+
+                yield return null;
+            }
+        }
+
+        public void EndTurn()
+        {
+            _activePlayer.EndTurn();
+
+            if (_activePlayer == humanPlayer)
+            {
+                if (_playerTurnSkipped || _turnTimer <= 0f)
+                    Debug.Log(_activePlayer.playerName + " skipped their turn.");
+                _activePlayer = botPlayer;
+            }
+            else
+                _activePlayer = humanPlayer;
+
+            StartTurn();
+        }
+
+        /*private IEnumerator DeterminateWinner()
+        {
+            switch (_activePlayer == humanPlayer)
+            {
+                case false:
+                    yield return _waitAfterEnd;
+                    _losePanel.Show();
+                    StopCoroutine(_coroutine);
+                    break;
+                case true when Players.Count == 1:
+                    yield return _waitAfterEnd;
+                    _winPanel.Show();
+                    StopCoroutine(_coroutine);
+                    break;
+                default:
+                    StartTurn();
+                    break;
+            }
+        }*/
     }
 }

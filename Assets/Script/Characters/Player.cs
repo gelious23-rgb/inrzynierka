@@ -5,17 +5,18 @@ using UnityEngine;
 
 namespace Script.Characters
 {
-    public class Player : MonoBehaviour 
+    public class Player : MonoBehaviour
     {
-
-        [field: SerializeField]
-        public bool IsPlayer { get; private set; }
+        
         [field: SerializeField]
         public Health.Health HealthObject { get; set; }
         public Mana.Mana ManaObject { get; set; }
 
         private NextTurnButton _nextTurnButton;
         private BoardManager _boardManager;
+        
+        public string playerName;
+        private bool shouldSkipTurn;
 
 
         public Player(NextTurnButton nextTurnButton)
@@ -25,42 +26,33 @@ namespace Script.Characters
         private void Awake()
         {
             HealthObject = GetComponentInChildren<Health.Health>();
+            ManaObject = GetComponentInChildren<Mana.Mana>();
         }
     
-
-
-        public IEnumerator TurnBot()
+        public  void StartTurn()
         {
-        
-            _nextTurnButton.gameObject.SetActive(false);
-            // yield return _board.AddCardToHand(2);
-            yield return new WaitForSeconds(5.0f);
-            Debug.Log("AI Bot Turn");
-
-
+            Debug.Log("Start of turn for " + playerName);
+            AddMana();
+            shouldSkipTurn = false;
+            
+            // Perform player-specific actions at the start of the turn
         }
-
-        public IEnumerator TurnPlayer(int _cardAmount)
-        {
-            for (int i = 0; i < _cardAmount; i++)
-            {
-                _nextTurnButton.gameObject.SetActive(true);
-                yield break;
-            }
         
-            _nextTurnButton.gameObject.SetActive(false);
-        }
-
-        private IEnumerator WaitForPlayerAction()
+        public void EndTurn()
         {
-            yield return null;
+            Debug.Log("End of turn for " + playerName);
+            // Perform player-specific actions at the end of the turn
+        }
+        
+        public bool ShouldSkipTurn()
+        {
+            return shouldSkipTurn;
         }
     
-
         public void AddMana()
         {
-            ManaObject.Increase(1);
             ManaObject.IncreseManaMax(1);
+            ManaObject.Increase(1);
         }
     
         
