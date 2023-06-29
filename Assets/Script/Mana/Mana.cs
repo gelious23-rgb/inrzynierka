@@ -1,16 +1,13 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using EasyButtons;
+
 namespace Script.Mana
 {
     public class Mana: MonoBehaviour, IMana
     {
-        [SerializeField]
+
         private int _manaValue = 1;
-        [SerializeField]
-        private int _manaMax;
+        private int _manaMax = 1;
         private TextMeshProUGUI _mana;
 
         private void Awake()
@@ -23,7 +20,7 @@ namespace Script.Mana
             _mana.text = _manaValue.ToString();
         }
         
-        [Button]
+
         public void Decrease(int decreaseValue)
         {
             _manaValue -= decreaseValue;
@@ -36,19 +33,19 @@ namespace Script.Mana
             
         }
 
-        [Button]
+
         public void Increase(int increaseValue)
         {
             _manaValue += increaseValue;
             _mana.text = _manaValue.ToString();
 
-            if (_manaValue > _manaMax)
+            if (_manaValue >= _manaMax)
             {
                 ResetMana();
             }
         }
 
-        [Button]
+
         public void IncreseManaMax(int increaseValue)
         {
             _manaMax += increaseValue;

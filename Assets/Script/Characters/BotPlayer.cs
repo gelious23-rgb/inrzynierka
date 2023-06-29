@@ -1,15 +1,12 @@
+using Script.UI.Buttons;
+using UnityEngine.Networking.PlayerConnection;
+
 namespace Script.Characters
 {
-    public class BotPlayer : IPlayer
+    public class BotPlayer : Player
     {
-        public void StartTurn()
+        public BotPlayer(NextTurnButton nextTurnButton) : base(nextTurnButton)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void EndTurn()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

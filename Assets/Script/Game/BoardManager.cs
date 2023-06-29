@@ -29,28 +29,13 @@ namespace Script.Game
 
         void Start()
         {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                InitializePlayerDeck();
-            }
+            InitializePlayerDeck();
+            InitializeEnemyDeck();
+
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                InitializePlayerDeck();
-                InitializeEnemyDeck();
-            }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                AddCardToPlayerHand(3);
-            }
-        }
-
-        private void AddCardToPlayerHand(int p_count)
+        public void AddCardToPlayerHand(int p_count)
         {
             if (_playerHand.transform.childCount + p_count > _playerHandCardLimitCount)
             {
@@ -79,10 +64,10 @@ namespace Script.Game
 
                 }
             }
-
+            
         }
 
-        private void InitializePlayerDeck()
+        public void InitializePlayerDeck()
         {
             for (int i = 0; i < _playerDeckCardCount; i++)
             {
@@ -90,7 +75,7 @@ namespace Script.Game
             }
         }
 
-        private void InitializeEnemyDeck()
+        public void InitializeEnemyDeck()
         {
             for (int i = 0; i < _enemyDeckCardCount; i++)
             {
