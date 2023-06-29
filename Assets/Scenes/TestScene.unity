@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerDeckCardCount: 20
-  _enemyDeckCardCount: 3
+  _enemyDeckCardCount: 20
   _playerHandCardLimitCount: 5
   _enemyHandCardLimitCount: 5
   _boardCardLimitCount: 5
@@ -979,6 +979,7 @@ MonoBehaviour:
   _boardManager: {fileID: 748647240}
   _nextTurnButton: {fileID: 1325699234}
   turnTimeLimit: 30
+  testMana: 0
 --- !u!1 &1136927387 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8795500337845706603, guid: 0c133fa3766166e4b8211214c6120355, type: 3}

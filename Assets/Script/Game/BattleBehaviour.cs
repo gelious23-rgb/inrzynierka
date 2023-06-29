@@ -23,9 +23,13 @@ namespace Script.Game
         private bool _playerTurnSkipped;
         public float turnTimeLimit = 30f;
         private float _turnTimer;
+
+        public int testMana;
         
         private void Start()
         {
+            _boardManager.AddCardToPlayerHand(3);
+            _boardManager.AddCardToEnemyHand(3);
             _activePlayer = humanPlayer;
             StartTurn();
         }
@@ -59,12 +63,27 @@ namespace Script.Game
         
         public IEnumerator TurnBot()
         {
-            yield return new WaitForSeconds(1f); 
-            
-            // Bot's turn logic goes here
-            
-            // You can implement AI decision-making, card plays, and other actions
+            _boardManager.AddCardToEnemyHand(1);
 
+
+            yield return new WaitForSeconds(1f);
+
+            //go throuh each card in enemyHand
+            for(int i = 0; i < _boardManager.EnemyHand().gameObject.transform.childCount; i ++)
+            {
+                int currentCardManacost = _boardManager.EnemyHand().gameObject.transform.GetChild(i).gameObject.GetComponent<Script.Card.CardDisplay>()._card.manacost;
+
+                //if current card manacost is less than we have
+                if (currentCardManacost <= GetEnemyCurrentMana())
+                {
+                    //add this card on board
+                    _boardManager.EnemyHand().gameObject.transform.GetChild(i).gameObject.transform.SetParent(_boardManager.EnemyBoard().transform);
+
+                    botPlayer.ManaObject.Decrease(currentCardManacost);
+
+                }
+            }
+            botPlayer.ManaObject.ManaValue = botPlayer.ManaObject.ManaMax;
             yield return new WaitForSeconds(1f); 
             
             EndTurn();
@@ -72,7 +91,7 @@ namespace Script.Game
         
         public IEnumerator TurnPlayer()
         {
-            _boardManager.AddCardToPlayerHand(3); 
+             _boardManager.AddCardToPlayerHand(1); 
              yield return TurnTimer();
             
             if (_activePlayer.ShouldSkipTurn())
@@ -134,5 +153,10 @@ namespace Script.Game
                     break;
             }
         }*/
+
+        private int GetEnemyCurrentMana()
+        {
+            return botPlayer.ManaObject.ManaValue;
+        }
     }
 }

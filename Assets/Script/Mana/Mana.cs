@@ -10,6 +10,17 @@ namespace Script.Mana
         private int _manaMax = 1;
         private TextMeshProUGUI _mana;
 
+        public int ManaValue
+        {
+            get { return _manaValue; } // Getter method
+            set { _manaValue = value; } // Setter method
+        }
+
+        public int ManaMax
+        {
+            get { return _manaMax; }
+        }
+
         private void Awake()
         {
             _mana = GetComponentInChildren<TextMeshProUGUI>();
