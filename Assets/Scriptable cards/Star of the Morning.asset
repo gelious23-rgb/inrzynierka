@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Star of the Morning
   m_EditorClassIdentifier: 
-  name: Star of the Morning
-  description: "When used on a \u201CMan\u201D, \u201CHeroic\u201D or \u201CPowers\u201D
+  Name: Star of the Morning
+  Hp: 0
+  Attack: 0
+  Manacost: 0
+  Description: "When used on a \u201CMan\u201D, \u201CHeroic\u201D or \u201CPowers\u201D
     card, increase their MaxAtk by 2. When used on \u201CRelic\u201D card, increase
-    effect based on Relic. "
+    effect based on Relic."
   CardType: 0
-  cardImage: {fileID: 0}
-  hp: 0
-  attack: 0
-  manacost: 0
+  CardImage: {fileID: 0}

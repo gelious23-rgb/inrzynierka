@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Eden Fruit
   m_EditorClassIdentifier: 
-  name: Eden Fruit
-  description: Grants Miracle for 1 turn to random ally each turn.
+  Name: Eden Fruit
+  Hp: 11
+  Attack: 0
+  Manacost: 5
+  Description: Grants Miracle for 1 turn to random ally each turn.
   CardType: 3
-  cardImage: {fileID: 0}
-  hp: 11
-  attack: 0
-  manacost: 5
+  CardImage: {fileID: 21300000, guid: 08f2a7dc5fd5f584890b9e20a252a3a4, type: 3}

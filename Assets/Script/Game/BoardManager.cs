@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using Script.Card;
+using Script.Characters;
 using UnityEngine;
+
 
 namespace Script.Game
 {
@@ -15,126 +16,95 @@ namespace Script.Game
 
         [SerializeField] private GameObject _canvas;
 
+        [SerializeField] private Player _player;
         [SerializeField] private GameObject _playerHand;
         [SerializeField] private GameObject _playerBoard;
         [SerializeField] private GameObject _enemyHand;
+
+        [SerializeField] private GameObject _enemyBoard;
+
+        public CardDisplay CardPrefab;
+
+        [SerializeField] private Transform _cardInstanceTransform;
+        [SerializeField] private List<Card.Card> _cards = new();
+        [SerializeField] private List<GameObject> _playerDeck;
+        [SerializeField] private List<GameObject> _enemyDeck;
+        [SerializeField] private Mana.Mana _mana;
+
+        private void Start()
+        {
+            InitializePlayerDeck();
+            InitializeEnemyDeck();
+        }
+
         public GameObject EnemyHand()
         {
             return _enemyHand;
         }
+
         public GameObject EnemyBoard()
         {
             return _enemyBoard;
         }
-        [SerializeField] private GameObject _enemyBoard;
 
-
-        [SerializeField] private Transform _cardInstanceTransform;
-        [SerializeField] private GameObject _cardPrefab;
-        [SerializeField] private List<Card.Card> _cards = new List<Card.Card>();
-        [SerializeField] private List<GameObject> _playerDeck;
-        [SerializeField] private List<GameObject> _enemyDeck;
-
-        void Start()
+        public void AddCardToPlayerHand(int cardAmount)
         {
-            InitializePlayerDeck();
-            InitializeEnemyDeck();
-
-        }
-
-
-        public void AddCardToPlayerHand(int p_count)
-        {
-            if (_playerHand.transform.childCount + p_count > _playerHandCardLimitCount)
-            {
-                for (int i = _playerHand.transform.childCount; i < _playerHandCardLimitCount; i++)
+            if (_playerHand.transform.childCount + cardAmount > _playerHandCardLimitCount)
+                for (var i = _playerHand.transform.childCount; i < _playerHandCardLimitCount; i++)
                 {
-                    GameObject card = _playerDeck[0];
-
+                    var card = _playerDeck[0];
                     _playerDeck.Remove(_playerDeck[0]);
-
-                    //card.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-
                     card.transform.SetParent(_playerHand.transform);
                 }
-            }
             else
-            {
-                for (int i = 0; i < p_count; i++)
+                for (var i = 0; i < cardAmount; i++)
                 {
-                    GameObject card = _playerDeck[0];
-
+                    var card = _playerDeck[0];
                     _playerDeck.Remove(_playerDeck[0]);
-
-                    //card.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-
                     card.transform.SetParent(_playerHand.transform);
-
                 }
-            }
-            
         }
 
-        public void AddCardToEnemyHand(int p_count)
+        public void AddCardToEnemyHand(int cardAmount)
         {
-            if (_enemyHand.transform.childCount + p_count > _enemyHandCardLimitCount)
-            {
-                for (int i = _enemyHand.transform.childCount; i < _enemyHandCardLimitCount; i++)
+            if (_enemyHand.transform.childCount + cardAmount > _enemyHandCardLimitCount)
+                for (var i = _enemyHand.transform.childCount; i < _enemyHandCardLimitCount; i++)
                 {
-                    GameObject card = _enemyDeck[0];
-
+                    var card = _enemyDeck[0];
                     _enemyDeck.Remove(_enemyDeck[0]);
-
-                    //card.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-
                     card.transform.SetParent(_enemyHand.transform);
                 }
-            }
             else
-            {
-                for (int i = 0; i < p_count; i++)
+                for (var i = 0; i < cardAmount; i++)
                 {
-                    GameObject card = _enemyDeck[0];
-
+                    var card = _enemyDeck[0];
                     _enemyDeck.Remove(_enemyDeck[0]);
-
-                    //card.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-
                     card.transform.SetParent(_enemyHand.transform);
-
                 }
-            }
-
         }
 
         public void InitializePlayerDeck()
         {
-            for (int i = 0; i < _playerDeckCardCount; i++)
-            {
-                _playerDeck.Add(CreateRandomCard());
-            }
+            for (var i = 0; i < _playerDeckCardCount; i++) _playerDeck.Add(CreateRandomCard());
         }
 
         public void InitializeEnemyDeck()
         {
-            for (int i = 0; i < _enemyDeckCardCount; i++)
-            {
-                _enemyDeck.Add(CreateRandomCard());
-            }
+            for (var i = 0; i < _enemyDeckCardCount; i++) _enemyDeck.Add(CreateRandomCard());
         }
 
         private GameObject CreateRandomCard()
         {
-            // Instantiate blank card with CardDisplay
-            GameObject cardInstance = Instantiate(_cardPrefab, _cardInstanceTransform);
-            //Assign scriptableObject (random cardinfo)
-            cardInstance.GetComponent<CardDisplay>()._card = _cards[Random.Range(0, _cards.Count)];
+            var cardInstance = Instantiate(CardPrefab, _cardInstanceTransform);
 
-            CardDragAndDrop cardDragDrop = cardInstance.AddComponent<CardDragAndDrop>();
+            var cardData = _cards[Random.Range(0, _cards.Count)];
+            cardInstance.Card = cardData;
 
-            cardDragDrop.Initialize(_playerHand, _playerBoard, _canvas, _boardCardLimitCount);
+            var cardDragDrop = cardInstance.gameObject.AddComponent<CardDragAndDrop>();
+            cardDragDrop.Initialize(_playerHand, _playerBoard, _canvas, _boardCardLimitCount, _player, _mana,
+                cardData.Manacost);
 
-            return cardInstance;
+            return cardInstance.gameObject;
         }
     }
 }

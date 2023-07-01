@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Fanatic
   m_EditorClassIdentifier: 
-  name: Fanatic
-  description: 'Indignation '
+  Name: Fanatic
+  Hp: 2
+  Attack: 2
+  Manacost: 2
+  Description: 'Indignation '
   CardType: 1
-  cardImage: {fileID: 0}
-  hp: 2
-  attack: 2
-  manacost: 2
+  CardImage: {fileID: 21300000, guid: a3bbca893520c6547a376afc1a77ccfc, type: 3}

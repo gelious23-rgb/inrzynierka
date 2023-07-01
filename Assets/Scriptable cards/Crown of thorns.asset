@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Crown of thorns
   m_EditorClassIdentifier: 
-  name: 'Crown of thorns '
-  description: Grants 2 hp Blessings for all allies. Every time ally receives damage,
+  Name: 
+  Hp: 10
+  Attack: 0
+  Manacost: 5
+  Description: Grants 2 hp Blessings for all allies. Every time ally receives damage,
     restore 1 hp for that ally and increase its attack by +1. If ally dies when crown
     is on the field, draw 1 card
   CardType: 3
-  cardImage: {fileID: 0}
-  hp: 10
-  attack: 0
-  manacost: 5
+  CardImage: {fileID: 21300000, guid: e514db7c9cec6674db9ef925e4220ad8, type: 3}

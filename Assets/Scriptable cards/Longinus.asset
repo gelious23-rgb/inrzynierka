@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Longinus
   m_EditorClassIdentifier: 
-  name: Longinus
-  description: "Counterattack. When destroying a card, every ally receives +1 atk
+  Name: Longinus
+  Hp: 8
+  Attack: 3
+  Manacost: 3
+  Description: "Counterattack. When destroying a card, every ally receives +1 atk
     +1hp. On death, transform into \u201CHoly lance\u201D"
   CardType: 4
-  cardImage: {fileID: 0}
-  hp: 8
-  attack: 3
-  manacost: 3
+  CardImage: {fileID: 21300000, guid: e70e619413d84b448bb6b7694cd7375e, type: 3}

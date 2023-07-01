@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Holy Lance
   m_EditorClassIdentifier: 
-  name: Holy lance
-  description: (1 time) If granted to a card at full hp, next target attacked is
+  Name: Holy Lance
+  Hp: 0
+  Attack: 0
+  Manacost: 0
+  Description: (1 time) If granted to a card at full hp, next target attacked is
     instantly destroyed
   CardType: 0
-  cardImage: {fileID: 0}
-  hp: 0
-  attack: 0
-  manacost: 0
+  CardImage: {fileID: 0}

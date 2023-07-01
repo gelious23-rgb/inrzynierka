@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: The Lamb
   m_EditorClassIdentifier: 
-  name: The Lamb
-  description: "Pride. If alive for 3 turns, deal 30% hp to it\u2019s owner and opponent."
+  Name: The Lamb
+  Hp: 22
+  Attack: 3
+  Manacost: 7
+  Description: "Pride. If alive for 3 turns, deal 30% hp to it\u2019s owner and opponent."
   CardType: 4
-  cardImage: {fileID: 21300000, guid: 7a712d750b8a58247a675779163d9c23, type: 3}
-  hp: 22
-  attack: 3
-  manacost: 7
+  CardImage: {fileID: 21300000, guid: 7a712d750b8a58247a675779163d9c23, type: 3}

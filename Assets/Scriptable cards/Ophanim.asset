@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Ophanim
   m_EditorClassIdentifier: 
-  name: Ophanim
-  description: 'Protection. Blaze '
+  Name: Ophanim
+  Hp: 7
+  Attack: 3
+  Manacost: 5
+  Description: 'Protection. Blaze '
   CardType: 2
-  cardImage: {fileID: 21300000, guid: 320bd17298ecfe241b326d2508801a70, type: 3}
-  hp: 7
-  attack: 3
-  manacost: 5
+  CardImage: {fileID: 21300000, guid: 320bd17298ecfe241b326d2508801a70, type: 3}
