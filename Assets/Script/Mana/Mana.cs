@@ -6,45 +6,50 @@ namespace Script.Mana
     public class Mana: MonoBehaviour, IMana
     {
 
-        private int _manaValue = 1;
+        private int _manaCurrent = 1;
         private int _manaMax = 1;
         private TextMeshProUGUI _mana;
+
+        public int ManaCurrent
+        {
+            get => _manaCurrent;
+            set => _manaCurrent = value; 
+        }
 
         private void Awake()
         {
             _mana = GetComponentInChildren<TextMeshProUGUI>();
         }
-        
+
         private void Start()
         {
-            _mana.text = _manaValue.ToString();
+            _mana.text = _manaCurrent.ToString();
         }
-        
+
+        public int ManaMax => _manaMax;
 
         public void Decrease(int decreaseValue)
         {
-            _manaValue -= decreaseValue;
-            _mana.text = _manaValue.ToString();
-            if (_manaValue < 0)
+            _manaCurrent -= decreaseValue;
+            _mana.text = _manaCurrent.ToString();
+            if (_manaCurrent < 0)
             {
-                _manaValue = 0;
-                _mana.text = _manaValue.ToString();
+                _manaCurrent = 0;
+                _mana.text = _manaCurrent.ToString();
             }
             
         }
 
-
         public void Increase(int increaseValue)
         {
-            _manaValue += increaseValue;
-            _mana.text = _manaValue.ToString();
+            _manaCurrent += increaseValue;
+            _mana.text = _manaCurrent.ToString();
 
-            if (_manaValue >= _manaMax)
+            if (_manaCurrent >= _manaMax)
             {
                 ResetMana();
             }
         }
-
 
         public void IncreseManaMax(int increaseValue)
         {
@@ -59,11 +64,13 @@ namespace Script.Mana
 
             }
         }
-        public void ResetMana()
+
+        private void ResetMana()
         {
-            _manaValue = _manaMax;
-            _mana.text = _manaValue.ToString();
+            _manaCurrent = _manaMax;
+            _mana.text = _manaCurrent.ToString();
         }
+
 
 
     }

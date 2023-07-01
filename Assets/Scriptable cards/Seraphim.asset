@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Seraphim
   m_EditorClassIdentifier: 
-  name: Seraph
-  description: 'Execution '
+  Name: Seraph
+  Hp: 6
+  Attack: 6
+  Manacost: 4
+  Description: Execution
   CardType: 2
-  cardImage: {fileID: 21300000, guid: b7ac2bd55dbff074c9741a91c52c220b, type: 3}
-  hp: 6
-  attack: 6
-  manacost: 4
+  CardImage: {fileID: 21300000, guid: b7ac2bd55dbff074c9741a91c52c220b, type: 3}

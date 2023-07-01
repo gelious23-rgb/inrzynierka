@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Sisyphus
   m_EditorClassIdentifier: 
-  name: Sisyphus
-  description: 'Upon death, revive at the cost of death of one Powers card '
+  Name: Sisyphus
+  Hp: 8
+  Attack: 5
+  Manacost: 5
+  Description: 'Upon death, revive at the cost of death of one Powers card '
   CardType: 3
-  cardImage: {fileID: 21300000, guid: 8929913710f71584c9e0cc8a8044cf2c, type: 3}
-  hp: 8
-  attack: 5
-  manacost: 5
+  CardImage: {fileID: 21300000, guid: ad68fbc4d4eaff14ebdbd3eb1f6252ca, type: 3}

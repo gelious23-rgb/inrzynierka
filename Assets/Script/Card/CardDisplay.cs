@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Script.Card
@@ -7,13 +8,13 @@ namespace Script.Card
     public class CardDisplay : MonoBehaviour
     {
         [SerializeField]
-        public global::Script.Card.Card _card;
+        public global::Script.Card.Card Card;
         [SerializeField]
         private TextMeshProUGUI _cardName;
         [SerializeField]
         private TextMeshProUGUI _cardDescription;
         [SerializeField]
-        private TextMeshProUGUI _cardHP;
+        private TextMeshProUGUI _cardHp;
         [SerializeField]
         private TextMeshProUGUI _cardAttack;
         [SerializeField]
@@ -30,15 +31,15 @@ namespace Script.Card
 
         private void CardInitialize()
         {
-            _cardName.text = _card.name;
-            _cardDescription.text = _card.description;
-            _cardType.text = _card.CardType.ToString();
+            _cardName.text = Card.Name;
+            _cardDescription.text = Card.Description;
+            _cardType.text = Card.CardType.ToString();
 
-            _cardAttack.text = _card.attack.ToString();
-            _cardManacost.text = _card.manacost.ToString();
-            _cardHP.text = _card.hp.ToString();
+            _cardAttack.text = Card.Attack.ToString();
+            _cardManacost.text = Card.Manacost.ToString();
+            _cardHp.text = Card.Hp.ToString();
 
-            _cardImage.sprite = _card.cardImage;
+            _cardImage.sprite = Card.CardImage;
             _cardImage.color = new Color32(255, 255, 255, 255);
 
         }

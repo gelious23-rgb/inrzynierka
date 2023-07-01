@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Script.Card;
+using Script.UI.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Script.UI
+namespace Script.UI.Menu
 {
     public class UIMenu : MonoBehaviour
     {
@@ -40,15 +41,15 @@ namespace Script.UI
             var card = Instantiate(CardUI, Content.transform);
             var cardSc = card.GetComponent<CardCompendiumSC>();
         
-            cardSc.name_.text = cardSC.name;
-            cardSc.desc.text = cardSC.description;
-            cardSc.artwork.sprite = cardSC.cardImage;
+            cardSc.Name.text = cardSC.Name;
+            cardSc.Desc.text = cardSC.Description;
+            cardSc.Artwork.sprite = cardSC.CardImage;
             cardSc.Type.text = cardSC.CardType.ToString();
-            cardSc.hp.text = cardSC.hp.ToString();
-            cardSc.atk.text = cardSC.attack.ToString();
-            cardSc.cost.text = cardSC.manacost.ToString();
+            cardSc.Hp.text = cardSC.Hp.ToString();
+            cardSc.Atk.text = cardSC.Attack.ToString();
+            cardSc.Cost.text = cardSC.Manacost.ToString();
         
-            cardSc.onclick.onClick.AddListener(()=>OnClickCard(card));
+            cardSc.Onclick.onClick.AddListener(()=>OnClickCard(card));
         }
 
         private void OnClickCard(GameObject this_)

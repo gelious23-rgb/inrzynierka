@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b2205f223f384497e766da3bab67e, type: 3}
   m_Name: Bael
   m_EditorClassIdentifier: 
-  name: Bael
-  description: Gluttony
+  Name: Bael
+  Hp: 6
+  Attack: 5
+  Manacost: 3
+  Description: Gluttony
   CardType: 2
-  cardImage: {fileID: 0}
-  hp: 6
-  attack: 5
-  manacost: 3
+  CardImage: {fileID: 21300000, guid: ff5d4cc61b069a047a26e5436c2430ee, type: 3}

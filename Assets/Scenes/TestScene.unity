@@ -628,17 +628,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerDeckCardCount: 20
-  _enemyDeckCardCount: 3
+  _enemyDeckCardCount: 20
   _playerHandCardLimitCount: 5
   _enemyHandCardLimitCount: 5
   _boardCardLimitCount: 5
   _canvas: {fileID: 748647234}
+  _player: {fileID: 1883626905}
   _playerHand: {fileID: 1136927387}
   _playerBoard: {fileID: 674219872}
   _enemyHand: {fileID: 2140267530}
   _enemyBoard: {fileID: 447916825}
+  CardPrefab: {fileID: 7712379693163768730, guid: 4632354dd28f18941ac7fb8bff53a6e9, type: 3}
   _cardInstanceTransform: {fileID: 1151482323}
-  _cardPrefab: {fileID: 2183422445108504573, guid: 4632354dd28f18941ac7fb8bff53a6e9, type: 3}
   _cards:
   - {fileID: 11400000, guid: 30609d5128a1a2f499f3a2971027cb18, type: 2}
   - {fileID: 11400000, guid: d4af8fb32b9b3b74a903d5a1460d0a0d, type: 2}
@@ -657,10 +658,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0304d61881e6aa447a2f8b6009ba2b7d, type: 2}
   - {fileID: 11400000, guid: 356b79cc2388b9a478ca147832b50faf, type: 2}
   - {fileID: 11400000, guid: c8c884ca0e40e224695442ec912a46f0, type: 2}
-  - {fileID: 11400000, guid: 8dabc83d0717c2346930406d012833fc, type: 2}
   - {fileID: 11400000, guid: 5d329064b9f742743ac55d3935102eea, type: 2}
   _playerDeck: []
   _enemyDeck: []
+  _mana: {fileID: 2020441367}
 --- !u!1 &798192876
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,11 +975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b5a2cb31b340d58a70fd24927bffb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanPlayer: {fileID: 1883626905}
-  botPlayer: {fileID: 1145431529}
+  HumanPlayer: {fileID: 1883626905}
+  BotPlayer: {fileID: 1145431529}
   _boardManager: {fileID: 748647240}
   _nextTurnButton: {fileID: 1325699234}
-  turnTimeLimit: 30
+  TurnTimeLimit: 30
 --- !u!1 &1136927387 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8795500337845706603, guid: 0c133fa3766166e4b8211214c6120355, type: 3}
@@ -1043,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HealthObject>k__BackingField: {fileID: 0}
-  playerName: Pidor
+  PlayerName: 
 --- !u!4 &1151482323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 789915798760088279, guid: 3c8d2c48ff7c46d469c2ab95dac3f0b7, type: 3}
@@ -1303,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff84945fd7d14c1493b66f9522c93283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnTimerText: {fileID: 1416551002}
+  TurnTimerText: {fileID: 1416551002}
   _battleBehaviour: {fileID: 1017772288}
 --- !u!1 &1373391435
 GameObject:
@@ -1835,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HealthObject>k__BackingField: {fileID: 0}
-  playerName: Gandon
+  PlayerName: 
 --- !u!1 &1927204617
 GameObject:
   m_ObjectHideFlags: 0

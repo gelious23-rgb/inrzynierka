@@ -1,16 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
+using Script.Card;
 using Script.Characters;
 using Script.UI.Buttons;
 using Script.UI.Panel;
 using UnityEngine;
 
+
 namespace Script.Game
 {
     public class BattleBehaviour : MonoBehaviour
     {
-        public Player humanPlayer;
-        public BotPlayer botPlayer;
+        public Player HumanPlayer;
+        public BotPlayer BotPlayer;
         private Player _activePlayer;
         
         [SerializeField]
@@ -21,12 +22,15 @@ namespace Script.Game
         private LosePanel _losePanel;
         
         private bool _playerTurnSkipped;
-        public float turnTimeLimit = 30f;
+        public float TurnTimeLimit = 30f;
         private float _turnTimer;
+        
         
         private void Start()
         {
-            _activePlayer = humanPlayer;
+            _boardManager.AddCardToPlayerHand(3);
+            _boardManager.AddCardToEnemyHand(3);
+            _activePlayer = HumanPlayer;
             StartTurn();
         }
         
@@ -34,22 +38,20 @@ namespace Script.Game
          {
              _activePlayer.StartTurn();
              _playerTurnSkipped = false;
-             _turnTimer = turnTimeLimit;
+             _turnTimer = TurnTimeLimit;
 
-             if (_activePlayer == humanPlayer)
+             if (_activePlayer == HumanPlayer)
              {
                  _nextTurnButton.gameObject.SetActive(true);
                  StartCoroutine(TurnPlayer());
              }
              else
-             {
                  StartCoroutine(TurnBot());
-             }
          }
         
         public void SkipPlayerTurn()
         {
-            if (_activePlayer == humanPlayer)
+            if (_activePlayer == HumanPlayer)
             {
                 _playerTurnSkipped = true;
                 _nextTurnButton.gameObject.SetActive(false);
@@ -59,32 +61,33 @@ namespace Script.Game
         
         public IEnumerator TurnBot()
         {
-            yield return new WaitForSeconds(1f); 
+            _boardManager.AddCardToEnemyHand(1);
+            yield return new WaitForSeconds(1f);
             
-            // Bot's turn logic goes here
-            
-            // You can implement AI decision-making, card plays, and other actions
-
-            yield return new WaitForSeconds(1f); 
-            
+            for(int i = 0; i < _boardManager.EnemyHand().gameObject.transform.childCount; i ++)
+            {
+                int currentCardManacost = _boardManager.EnemyHand().gameObject.transform.GetChild(i).gameObject.GetComponent<CardDisplay>().Card.Manacost;
+                if (currentCardManacost <= GetEnemyCurrentMana())
+                {
+                    _boardManager.EnemyHand().gameObject.transform.GetChild(i).gameObject.transform.SetParent(_boardManager.EnemyBoard().transform);
+                    BotPlayer.ManaObject.Decrease(currentCardManacost);
+                }
+            }
+            BotPlayer.ManaObject.ManaCurrent = BotPlayer.ManaObject.ManaMax;
+            yield return new WaitForSeconds(1f);
             EndTurn();
         }
         
         public IEnumerator TurnPlayer()
         {
-            _boardManager.AddCardToPlayerHand(3); 
+             _boardManager.AddCardToPlayerHand(1);
              yield return TurnTimer();
-            
-            if (_activePlayer.ShouldSkipTurn())
-            {
-                Debug.Log(_activePlayer.playerName + " skipped their turn.");
-            }
-            else if (_turnTimer <= 0f)
-            {
-                Debug.Log(_activePlayer.playerName + " ran out of time.");
-            }
 
-            yield return new WaitForSeconds(1f); // Delay for visual effect or animation
+             if (_activePlayer.ShouldSkipTurn())
+                 Debug.Log(_activePlayer.PlayerName + " skipped their turn.");
+             else if (_turnTimer <= 0f) Debug.Log(_activePlayer.PlayerName + " ran out of time.");
+             
+             yield return new WaitForSeconds(1f); 
             EndTurn();
         }
 
@@ -103,36 +106,18 @@ namespace Script.Game
         {
             _activePlayer.EndTurn();
 
-            if (_activePlayer == humanPlayer)
+            if (_activePlayer == HumanPlayer)
             {
                 if (_playerTurnSkipped || _turnTimer <= 0f)
-                    Debug.Log(_activePlayer.playerName + " skipped their turn.");
-                _activePlayer = botPlayer;
+                    Debug.Log(_activePlayer.PlayerName + " skipped their turn.");
+                _activePlayer = BotPlayer;
             }
             else
-                _activePlayer = humanPlayer;
+                _activePlayer = HumanPlayer;
 
             StartTurn();
         }
-
-        /*private IEnumerator DeterminateWinner()
-        {
-            switch (_activePlayer == humanPlayer)
-            {
-                case false:
-                    yield return _waitAfterEnd;
-                    _losePanel.Show();
-                    StopCoroutine(_coroutine);
-                    break;
-                case true when Players.Count == 1:
-                    yield return _waitAfterEnd;
-                    _winPanel.Show();
-                    StopCoroutine(_coroutine);
-                    break;
-                default:
-                    StartTurn();
-                    break;
-            }
-        }*/
+        
+        private int GetEnemyCurrentMana() => BotPlayer.ManaObject.ManaCurrent;
     }
 }
